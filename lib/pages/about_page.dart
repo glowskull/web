@@ -31,7 +31,7 @@ class AboutPage extends StatelessWidget {
               child: screenType == ScreenType.desktop
                   ? Row(
                 children: [
-                  const Expanded(child: AppLogo()),
+                  const Expanded(child: AppLogo(height: 300)),
                   Expanded(child: content),
                 ],
               )

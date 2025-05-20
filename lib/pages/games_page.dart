@@ -10,6 +10,10 @@ class GamesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenType = context.screenType();
+    final screenWidth = MediaQuery.of(context).size.width;
+    const desiredHeight = 400.0;
+    final ratio = screenWidth / desiredHeight; // childAspectRatio = width/height.
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -25,6 +29,7 @@ class GamesPage extends StatelessWidget {
                 child: screenType == ScreenType.desktop
                     ? GridView.count(
                   crossAxisCount: 1,
+                  childAspectRatio: ratio,
                   mainAxisSpacing: 16,
                   crossAxisSpacing: 16,
                   children: kGames

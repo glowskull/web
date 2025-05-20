@@ -22,7 +22,7 @@ class DesktopAppBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 9),
       child: Row(
         children: [
-          const AppLogo(),
+          const AppLogo(height: 42),
           const Spacer(
             flex: 6,
           ),

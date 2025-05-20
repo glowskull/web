@@ -24,7 +24,7 @@ class MobileAppBar extends StatelessWidget {
                   ? const Icon(Icons.close)
                   : const Icon(Icons.menu)),
           const Spacer(),
-          const AppLogo(),
+          const AppLogo(height: 42),
           const Spacer(),
           const Spacer(),
           // TextButton(onPressed: () {}, child: const Text("SIGN IN")),
