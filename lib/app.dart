@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_product_web_page/colors.dart';
+import 'package:responsive_product_web_page/pages/about_page.dart';
+import 'package:responsive_product_web_page/pages/chibi_chess_page.dart';
+import 'package:responsive_product_web_page/pages/clash_of_crowns_page.dart';
+import 'package:responsive_product_web_page/pages/games_page.dart';
+import 'package:responsive_product_web_page/pages/product_page.dart';
 
-import 'pages/collection_page.dart';
+import 'pages/product_page.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -69,7 +74,13 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
-      home: const CollectionsPage(),
+      initialRoute: '/about',
+      routes: {
+        '/games': (_) => const GamesPage(),
+        '/about': (_) => const AboutPage(),
+        '/games/chibi-chess': (_) => const ChibiChessPage(),
+        '/games/clash-of-crowns': (_) => const ClashOfCrownsPage(),
+      },
     );
   }
 }

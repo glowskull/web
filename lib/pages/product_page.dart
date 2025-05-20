@@ -26,7 +26,9 @@ class _ProductPageState extends State<ProductPage> {
   Widget build(BuildContext context) {
     final screenType = context.screenType();
     return Scaffold(
-      drawer: screenType == ScreenType.mobile ? const Drawer() : null,
+      drawer: screenType == ScreenType.mobile
+        // Wrap it in Drawer so Navigator.pop() still closes it:
+        ? const Drawer(child: AppDrawer()) : null,
       body: Scrollbar(
         controller: verticalController,
         thumbVisibility: true,
@@ -57,17 +59,15 @@ class _ProductPageState extends State<ProductPage> {
                       child: const Spacer(),
                     ),
                     Expanded(
-                      flex: screenType == ScreenType.desktop ? 8 : 0,
-                      child: ImageSlider(
-                        images: const [
-                          "https://raw.githubusercontent.com/mostafaemara/responsive_product_web_page/master/resources/xbox_controller_1.jpg",
-                          "https://raw.githubusercontent.com/mostafaemara/responsive_product_web_page/master/resources/xbox_controller_2.jpg",
-                          "https://raw.githubusercontent.com/mostafaemara/responsive_product_web_page/master/resources/xbox_controller_3.jpg",
-                          "https://raw.githubusercontent.com/mostafaemara/responsive_product_web_page/master/resources/xbox_controller_4.jpg"
-                        ],
-                        screenType: screenType,
-                      ),
-                    ),
+                        flex: screenType == ScreenType.desktop ? 8 : 0,
+                        child: Card(
+                            elevation: 100,
+                            child: Stack(
+                              children: [
+                                Image.network(
+                                    'https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg')
+                              ],
+                            ))),
                     Visibility(
                       visible: screenType == ScreenType.desktop,
                       child: const Spacer(),
@@ -85,7 +85,7 @@ class _ProductPageState extends State<ProductPage> {
                 Text(
                   "Complete Your Experience".toUpperCase(),
                   style: TextStyle(
-                      color: Theme.of(context).colorScheme.onBackground,
+                      color: Theme.of(context).colorScheme.onSurface,
                       fontFamily: "Barlow",
                       fontSize: 24,
                       fontWeight: FontWeight.w500),

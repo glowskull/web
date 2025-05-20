@@ -3,6 +3,7 @@ import 'package:responsive_product_web_page/colors.dart';
 import 'package:responsive_product_web_page/pages/widgets/search_bar.dart' as resp;
 
 import '../../app.dart';
+import '../../constants/menu_items.dart';
 import 'app_logo.dart';
 
 class DesktopAppBar extends StatelessWidget {
@@ -25,54 +26,66 @@ class DesktopAppBar extends StatelessWidget {
           const Spacer(
             flex: 6,
           ),
-          ...[
-            TextButton(onPressed: () {}, child: const Text("GAMES")),
-            TextButton(onPressed: () {}, child: const Text("ABOUT")),
-          ].sublist(0, numberOfVisibleViews),
-          Visibility(
-            visible:
-                numberOfVisibleViews < viewsCounts && numberOfVisibleViews > 0,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              width: 120,
-              child: DropdownButtonHideUnderline(
-                child: DropdownButton(
-                  enableFeedback: false,
-                  itemHeight: 60,
-                  elevation: 0,
-                  isExpanded: true,
-                  iconDisabledColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  isDense: true,
-                  style: const TextStyle(
-                      color: AppColors.black,
-                      fontSize: 16,
-                      fontFamily: "BarlowCondensed"),
-                  hint: const Text(
-                    "More",
-                    style: TextStyle(
-                        color: AppColors.black,
-                        fontSize: 16,
-                        fontFamily: "BarlowCondensed"),
-                  ),
-                  items: const [
-                    DropdownMenuItem<String>(
-                      value: "GAMES",
-                      child: Text("ABOUT"),
-                    ),
-                    DropdownMenuItem<String>(
-                      value: "ABOUT",
-                      child: Text("GAMES"),
-                    ),
-                  ].sublist(numberOfVisibleViews, viewsCounts),
-                  onChanged: (value) {},
-                ),
-              ),
-            ),
-          ),
+
+          // Old responsive menu:
+          // ...[
+          //   TextButton(onPressed: () {}, child: const Text("GAMES")),
+          //   TextButton(onPressed: () {}, child: const Text("ABOUT")),
+          // ].sublist(0, numberOfVisibleViews),
+          // Visibility(
+          //   visible:
+          //       numberOfVisibleViews < viewsCounts && numberOfVisibleViews > 0,
+          //   child: Container(
+          //     padding: const EdgeInsets.symmetric(horizontal: 16),
+          //     width: 120,
+          //     child: DropdownButtonHideUnderline(
+          //       child: DropdownButton(
+          //         enableFeedback: false,
+          //         itemHeight: 60,
+          //         elevation: 0,
+          //         isExpanded: true,
+          //         iconDisabledColor: Colors.transparent,
+          //         focusColor: Colors.transparent,
+          //         isDense: true,
+          //         style: const TextStyle(
+          //             color: AppColors.black,
+          //             fontSize: 16,
+          //             fontFamily: "BarlowCondensed"),
+          //         hint: const Text(
+          //           "More",
+          //           style: TextStyle(
+          //               color: AppColors.black,
+          //               fontSize: 16,
+          //               fontFamily: "BarlowCondensed"),
+          //         ),
+          //         items: const [
+          //           DropdownMenuItem<String>(
+          //             value: "GAMES",
+          //             child: Text("ABOUT"),
+          //           ),
+          //           DropdownMenuItem<String>(
+          //             value: "ABOUT",
+          //             child: Text("GAMES"),
+          //           ),
+          //         ].sublist(numberOfVisibleViews, viewsCounts),
+          //         onChanged: (value) {},
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          ...kAppMenuItems.map((item) {
+            return TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, item.route);
+              },
+              child: Text(item.title.toUpperCase()),
+            );
+          }).toList(),
           const Spacer(
             flex: 6,
           ),
+
+          // Old search bar:
           // const SizedBox(height: 30, width: 200, child: resp.SearchBar()),
           // TextButton(onPressed: () {}, child: const Text("SIGN IN")),
           // IconButton(
@@ -82,6 +95,7 @@ class DesktopAppBar extends StatelessWidget {
           //       height: 20,
           //       width: 20,
           //     )),
+
           IconButton(
             tooltip: 'Toggle theme',
             icon: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
