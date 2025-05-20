@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_product_web_page/colors.dart';
-import 'package:responsive_product_web_page/pages/widgets/search_bar.dart';
+import 'package:responsive_product_web_page/pages/widgets/search_bar.dart' as resp;
 
 import 'app_logo.dart';
 
@@ -87,7 +87,7 @@ class DesktopAppBar extends StatelessWidget {
           const Spacer(
             flex: 6,
           ),
-          const SizedBox(height: 30, width: 200, child: SearchBar()),
+          const SizedBox(height: 30, width: 200, child: resp.SearchBar()),
           TextButton(onPressed: () {}, child: const Text("SIGN IN")),
           IconButton(
               onPressed: () {},
