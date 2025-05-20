@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_product_web_page/colors.dart';
 import 'package:responsive_product_web_page/pages/widgets/search_bar.dart' as resp;
 
+import '../../app.dart';
 import 'app_logo.dart';
 
 class DesktopAppBar extends StatelessWidget {
@@ -11,8 +12,10 @@ class DesktopAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = MyApp.of(context).isDark;
+
     final remainingWidth = MediaQuery.of(context).size.width - 611;
-    const viewsCounts = 5;
+    const viewsCounts = 2;
     final numberOfVisibleViews = (remainingWidth ~/ 120).clamp(0, viewsCounts);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 9),
@@ -23,13 +26,8 @@ class DesktopAppBar extends StatelessWidget {
             flex: 6,
           ),
           ...[
-            TextButton(onPressed: () {}, child: const Text("DEVICES")),
-            TextButton(onPressed: () {}, child: const Text("SOFTWARE")),
-            TextButton(
-                onPressed: () {}, child: const Text("GAMES & ENTERTAINMENT")),
-            TextButton(onPressed: () {}, child: const Text("GIFT CARDS")),
-            TextButton(
-                onPressed: () {}, child: const Text("EDUCATION & BUSINESS")),
+            TextButton(onPressed: () {}, child: const Text("GAMES")),
+            TextButton(onPressed: () {}, child: const Text("ABOUT")),
           ].sublist(0, numberOfVisibleViews),
           Visibility(
             visible:
@@ -59,25 +57,13 @@ class DesktopAppBar extends StatelessWidget {
                   ),
                   items: const [
                     DropdownMenuItem<String>(
-                      value: "DEVICES",
-                      child: Text("DEVICES"),
+                      value: "GAMES",
+                      child: Text("ABOUT"),
                     ),
                     DropdownMenuItem<String>(
-                      value: "SOFTWARE",
-                      child: Text("SOFTWARE"),
+                      value: "ABOUT",
+                      child: Text("GAMES"),
                     ),
-                    DropdownMenuItem<String>(
-                      value: "GAMES & ENTERTAINMENT",
-                      child: Text("GAMES & ENTERTAINMENT"),
-                    ),
-                    DropdownMenuItem<String>(
-                      value: "GIFT CARDS",
-                      child: Text("GIFT CARDS"),
-                    ),
-                    DropdownMenuItem<String>(
-                      value: "EDUCATION & BUSINESS",
-                      child: Text("EDUCATION & BUSINESS"),
-                    )
                   ].sublist(numberOfVisibleViews, viewsCounts),
                   onChanged: (value) {},
                 ),
@@ -87,15 +73,20 @@ class DesktopAppBar extends StatelessWidget {
           const Spacer(
             flex: 6,
           ),
-          const SizedBox(height: 30, width: 200, child: resp.SearchBar()),
-          TextButton(onPressed: () {}, child: const Text("SIGN IN")),
+          // const SizedBox(height: 30, width: 200, child: resp.SearchBar()),
+          // TextButton(onPressed: () {}, child: const Text("SIGN IN")),
+          // IconButton(
+          //     onPressed: () {},
+          //     icon: Image.asset(
+          //       "assets/images/cart.png",
+          //       height: 20,
+          //       width: 20,
+          //     )),
           IconButton(
-              onPressed: () {},
-              icon: Image.asset(
-                "assets/images/cart.png",
-                height: 20,
-                width: 20,
-              )),
+            tooltip: 'Toggle theme',
+            icon: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
+            onPressed: () => MyApp.of(context).toggleTheme(),
+          ),
         ],
       ),
     );

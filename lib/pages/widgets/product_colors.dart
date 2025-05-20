@@ -39,11 +39,12 @@ class ProductColors extends StatelessWidget {
           height: 8,
         ),
         Text(productColors[selectedIndex].title,
-            style: const TextStyle(
-              fontSize: 12,
-              fontFamily: "Roboto",
-              color: AppColors.black,
-            )),
+            style: TextStyle(
+                fontSize: 12,
+                fontFamily: "Roboto",
+                color: Theme.of(context).colorScheme.onBackground,
+            ),
+        ),
       ],
     );
   }

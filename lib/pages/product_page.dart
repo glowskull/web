@@ -84,8 +84,8 @@ class _ProductPageState extends State<ProductPage> {
                 ),
                 Text(
                   "Complete Your Experience".toUpperCase(),
-                  style: const TextStyle(
-                      color: AppColors.black,
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.onBackground,
                       fontFamily: "Barlow",
                       fontSize: 24,
                       fontWeight: FontWeight.w500),

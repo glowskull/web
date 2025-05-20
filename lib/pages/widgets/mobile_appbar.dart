@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_product_web_page/pages/widgets/app_logo.dart';
 
+import '../../app.dart';
+
 class MobileAppBar extends StatelessWidget {
   const MobileAppBar(
       {super.key, required this.onPressed, required this.isDrawerOpened});
@@ -8,6 +10,8 @@ class MobileAppBar extends StatelessWidget {
   final bool isDrawerOpened;
   @override
   Widget build(BuildContext context) {
+    final isDark = MyApp.of(context).isDark;
+
     //return AppBar();
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 9),
@@ -22,14 +26,20 @@ class MobileAppBar extends StatelessWidget {
           const Spacer(),
           const AppLogo(),
           const Spacer(),
-          TextButton(onPressed: () {}, child: const Text("SIGN IN")),
+          const Spacer(),
+          // TextButton(onPressed: () {}, child: const Text("SIGN IN")),
+          // IconButton(
+          //     onPressed: () {},
+          //     icon: Image.asset(
+          //       "assets/images/cart.png",
+          //       height: 20,
+          //       width: 20,
+          //     )),
           IconButton(
-              onPressed: () {},
-              icon: Image.asset(
-                "assets/images/cart.png",
-                height: 20,
-                width: 20,
-              )),
+            tooltip: 'Toggle theme',
+            icon: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
+            onPressed: () => MyApp.of(context).toggleTheme(),
+          ),
         ],
       ),
     );

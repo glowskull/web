@@ -15,8 +15,11 @@ class SearchBar extends StatelessWidget {
         decoration: InputDecoration(
             isDense: true,
             hintText: "I’m looking for…",
-            hintStyle: const TextStyle(
-                fontSize: 16, color: AppColors.grey, fontFamily: "Roboto"),
+            hintStyle: TextStyle(
+                fontSize: 16,
+                color: Theme.of(context).hintColor,
+                fontFamily: "Roboto"
+            ),
             prefixIcon: const Icon(Icons.search),
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(17),

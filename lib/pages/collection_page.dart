@@ -82,8 +82,8 @@ class _CollectionsPageState extends State<CollectionsPage> {
                 ),
                 Text(
                   "Complete Your Experience".toUpperCase(),
-                  style: const TextStyle(
-                      color: AppColors.black,
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSurface,
                       fontFamily: "Barlow",
                       fontSize: 24,
                       fontWeight: FontWeight.w500),

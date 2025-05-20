@@ -41,22 +41,28 @@ class _ProductOptionsState extends State<ProductOptions> {
         const SizedBox(
           height: 4,
         ),
-        const Text(
+        Text(
           "Accessories",
           style: TextStyle(
-              fontSize: 16, fontFamily: "Roboto", color: AppColors.black),
+              fontSize: 16,
+              fontFamily: "Roboto",
+              color: Theme.of(context).colorScheme.onBackground
+          ),
         ),
         const SizedBox(
           height: 4,
         ),
-        Row(
-          children: const [
+      Row(
+          children: [
             Text(
               "\$39.99",
               style: TextStyle(
-                  fontSize: 18, fontFamily: "Roboto", color: AppColors.black),
+                  fontSize: 18,
+                  fontFamily: "Roboto",
+                  color: Theme.of(context).colorScheme.onSurface
+              ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 15,
             ),
             Text(
@@ -64,10 +70,11 @@ class _ProductOptionsState extends State<ProductOptions> {
               style: TextStyle(
                   fontSize: 18,
                   fontFamily: "Roboto",
-                  color: AppColors.red,
-                  decoration: TextDecoration.lineThrough),
+                  color: Theme.of(context).colorScheme.error,
+                  decoration: TextDecoration.lineThrough
+              ),
             ),
-            Spacer(),
+            const Spacer(),
             Rating()
           ],
         ),
@@ -118,15 +125,16 @@ class _ProductOptionsState extends State<ProductOptions> {
         const SizedBox(
           height: 8,
         ),
-        const SizedBox(
+        SizedBox(
           width: double.infinity,
           child: Text(
             "Free shipping on orders over \$30",
             style: TextStyle(
                 fontFamily: "Roboto",
                 fontSize: 12,
-                color: AppColors.black,
-                fontWeight: FontWeight.w400),
+                color: Theme.of(context).colorScheme.onBackground,
+                fontWeight: FontWeight.w400
+            ),
             textAlign: TextAlign.center,
           ),
         ),
